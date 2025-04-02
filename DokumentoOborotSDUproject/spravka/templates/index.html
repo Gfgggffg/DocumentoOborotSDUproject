@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Люберецкий Техникум</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Люберецкий Техникум</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#about">О техникуме</a></li>
+                    <li><a href="#order">Заказать справку</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Добро пожаловать!</h2>
+            <p>Ваш путь к профессиональному успеху начинается здесь.</p>
+            <a href="#about" class="button">Узнать больше</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>О Люберецком Техникуме</h2>
+            <p>Люберецкий Техникум - это современное образовательное учреждение, предлагающее широкий спектр образовательных программ в различных областях.</p>
+            <p>Мы гордимся своими квалифицированными преподавателями и современной материально-технической базой.</p>
+            <p><strong>Наши преимущества:</strong></p>
+            <ul>
+                <li>Высокое качество образования</li>
+                <li>Практико-ориентированное обучение</li>
+                <li>Современное оборудование</li>
+                <li>Квалифицированные преподаватели</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="order">
+        <div class="container">
+            <h2>Заказать справку об обучении</h2>
+            <form action="#" method="post">  <!--  Замените "#" на адрес скрипта-обработчика  -->
+                <label for="fio">ФИО:</label>
+                <input type="text" id="fio" name="fio" required><br><br>
+
+                <label for="group">Группа:</label>
+                <input type="text" id="group" name="group" required><br><br>
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="comment">Комментарий:</label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+
+                <button type="submit">Отправить запрос</button>
+            </form>
+            <p class="note">Справка будет подготовлена в течение 3 рабочих дней.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Люберецкий Техникум</p>
+        </div>
+    </footer>
+
+</body>
+</html>
