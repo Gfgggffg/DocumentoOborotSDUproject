@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Люберецкий Техникум{% endblock %}</title>
+    <meta name="description" content="{% block description %}Современное образовательное учреждение в Люберцах{% endblock %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!-- Иконки Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="{% url 'glavnaya' %}">Люберецкий Техникум</a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="{% url 'glavnaya' %}" {% if request.path == '/' %}class="active"{% endif %}>
+                        <i class="fas fa-home"></i> Главная
+                    </a></li>
+                    
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'document_processing' %}" {% if 'document' in request.path %}class="active"{% endif %}>
+                            <i class="fas fa-file-alt"></i> Документооборот
+                        </a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            
+            <div class="auth-section">
+                {% if user.is_authenticated %}
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span>{{ user.username }}</span>
+                    </div>
+                    <form method="post" action="{% url 'logoutuser' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="auth-button logout-button">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'loginuser' %}" class="auth-button login-button">
+                        <i class="fas fa-sign-in-alt"></i> Вход
+                    </a>
+                    <a href="{% url 'signupuser' %}" class="auth-button signup-button">
+                        <i class="fas fa-user-plus"></i> Регистрация
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Люберецкий Техникум</h3>
+                    <p>Профессиональное образование для успешного будущего</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="{% url 'glavnaya' %}">Главная</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'document_processing' %}">Документооборот</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'signupuser' %}">Регистрация</a></li>
+                        <li><a href="{% url 'loginuser' %}">Вход в систему</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Люберцы, ул. Инициативная, д. 1</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 555-01-02</p>
+                    <p><i class="fas fa-envelope"></i> info@lyubertsy-tech.ru</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Люберецкий Техникум. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
